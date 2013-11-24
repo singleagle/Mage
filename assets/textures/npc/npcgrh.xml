@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<texture version="1" file="npcgrh.png" type="bitmap" width="256" height="256" pixelformat="RGBA_8888" minfilter="linear_mipmap_linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
+    <!-- Created with TexturePacker -->
+    <!-- http://texturepacker.com -->
+    <!-- $TexturePacker:SmartUpdate:8cbbc755f760806badd520e702704485$ -->
+    <textureregion id="0" src="Image 4254.png" x="0" y="0" width="80" height="150" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="80" srcheight="150"/>
+    <textureregion id="1" src="Image 4270.png" x="80" y="0" width="80" height="150" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="80" srcheight="150"/>
+    <textureregion id="2" src="Image 4292.png" x="160" y="0" width="80" height="150" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="80" srcheight="150"/>
+</texture>

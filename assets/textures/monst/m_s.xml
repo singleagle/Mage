@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<texture version="1" file="m_s.png" type="bitmap" width="256" height="512" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
+    <!-- Created with TexturePacker -->
+    <!-- http://texturepacker.com -->
+    <!-- $TexturePacker:SmartUpdate:fe3b4b2e3e21b48f4fc7422458164aa1$ -->
+    <textureregion id="0" src="m1_s.png" x="0" y="0" width="38" height="127" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="38" srcheight="127"/>
+    <textureregion id="1" src="m2_s.png" x="38" y="0" width="147" height="142" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="147" srcheight="142"/>
+    <textureregion id="2" src="m3_s.png" x="0" y="142" width="98" height="132" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="98" srcheight="132"/>
+    <textureregion id="3" src="m4_s.png" x="98" y="142" width="140" height="162" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="140" srcheight="162"/>
+</texture>

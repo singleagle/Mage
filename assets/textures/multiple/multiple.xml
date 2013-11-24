@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<texture version="1" file="multiple.png" type="bitmap" width="256" height="512" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
+    <!-- Created with TexturePacker -->
+    <!-- http://texturepacker.com -->
+    <!-- $TexturePacker:SmartUpdate:9097b9fb7a1f7bb3597142bd06dbb956$ -->
+    <textureregion id="0" src="btn.png" x="0" y="0" width="74" height="25" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="74" srcheight="25"/>
+    <textureregion id="1" src="btncancle.png" x="74" y="0" width="57" height="23" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="57" srcheight="23"/>
+    <textureregion id="2" src="btnok.png" x="131" y="0" width="57" height="22" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="57" srcheight="22"/>
+    <textureregion id="3" src="dialogbg.png" x="0" y="25" width="242" height="125" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="242" srcheight="125"/>
+    <textureregion id="4" src="die.png" x="0" y="150" width="67" height="116" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="67" srcheight="116"/>
+    <textureregion id="5" src="exitbtn.png" x="67" y="150" width="135" height="31" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="135" srcheight="31"/>
+    <textureregion id="6" src="face.png" x="0" y="266" width="60" height="56" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="60" srcheight="56"/>
+    <textureregion id="7" src="goonbtn.png" x="60" y="266" width="135" height="31" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="135" srcheight="31"/>
+    <textureregion id="8" src="monst_hp.png" x="0" y="322" width="86" height="8" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="86" srcheight="8"/>
+    <textureregion id="9" src="monst_hpboard.png" x="86" y="322" width="127" height="41" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="127" srcheight="41"/>
+    <textureregion id="10" src="nothing.png" x="0" y="363" width="89" height="78" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="89" srcheight="78"/>
+    <textureregion id="11" src="shadow.png" x="89" y="363" width="62" height="33" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="62" srcheight="33"/>
+    <textureregion id="12" src="startbtn.png" x="0" y="441" width="134" height="32" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="134" srcheight="32"/>
+</texture>

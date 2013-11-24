@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<scene id="1004" name="砺风戈壁" desc="" pk="true" type="2"></scene>
+<map fileid="5"></map>
+<door x="722" y="186" toscene="1000" tox="120" toy="320" title="" imageid="-1"></door>
+<monst id="2"></monst>
+</root>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.enjoy.mage"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    <uses-sdk android:minSdkVersion="10" />
+   
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+ <application
+        android:name=".common.MyApplication"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <meta-data android:name="cooId" android:value="c2483318a6844dd3b7e1ffa9b5d8ae6a"/>
+        <meta-data android:name="channelId" android:value="appchina"/>
+        
+        <activity
+            android:name=".graphics.GameActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+				
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.kuguo.openads.AdsOfferListActivity"/>
+		<activity android:name="com.kuguo.pushads.PushAdsActivity"
+			android:theme="@android:style/Theme.Dialog" android:excludeFromRecents="true" >
+			<intent-filter>
+				<action android:name="com.android.action_PUSHADSACTIVITY" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		<service android:name="com.kuguo.pushads.AdsService" />
+		<receiver android:name="com.kuguo.pushads.AdsReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.PACKAGE_ADDED" />
+				<data android:scheme="package" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+			</intent-filter>
+		</receiver>
+    </application>
+</manifest>

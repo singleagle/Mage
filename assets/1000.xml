@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<scene id="1000" name="卡萨洛城" desc="" pk="false" type="0"></scene>
+<map fileid="1"></map>
+<!-- <door x="100" y="100" toscene="1001" tox="2" toy="2" title="" imageid="-1"></door> -->
+<!-- <door x="300" y="300" toscene="1001" tox="2" toy="2" title="" imageid="-1"></door> -->
+<mark>1111111111111111111</mark>
+<!-- NPC的图片ID是用TexturePacker 生成的 -->
+ <npc id="0" imageid="0" x="322" y="222" name="葛瑞安" type="3"></npc>
+ <npc id="1" imageid="1" x="633" y="344" name="奥斯达" type="2"></npc>
+</root>

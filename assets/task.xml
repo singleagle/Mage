@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+<task id="0" npcid="0" reqtask="-1" type="3">
+	<desc>我想你已经听说了，为了各位勇士的尽快成长，我可以帮助你们，但我要收取灵魂作为代价。</desc>
+	<inprogressdesc>11111111111</inprogressdesc>
+	<reqitem>0</reqitem>
+</task>
+
+<task id="1" npcid="1" reqtask="-1" type="2">
+	<desc>我在这里负责场景的传送，现在开放了四个场景，每个场景的BOSS能力都不相同，请量力而为。</desc>
+	<inprogressdesc>11111111111</inprogressdesc>
+	<reqitem>0</reqitem>
+</task>
+
+</root>

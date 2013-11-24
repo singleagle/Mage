@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 怪物图片资源 -->
+<root>
+<monst id="0" stand_id="3" runfile="" attackfile="m4_a.png" runrow="" runcol="" attackrow="1" attackcol="3" run_tile_w="" run_tile_h="" 
+attack_tile_w="280" attack_tile_h="232" stand_offset_x="69" stand_offset_y="166" run_offset_x="" run_offset_y="" attack_offset_x="110"
+ attack_offset_y="199">
+ </monst>
+ <monst id="1" stand_id="1" runfile="" attackfile="m2_a.png" runrow="" runcol="" attackrow="2" attackcol="2" run_tile_w="" run_tile_h="" 
+attack_tile_w="229" attack_tile_h="248" stand_offset_x="70" stand_offset_y="142" run_offset_x="" run_offset_y="" attack_offset_x="93"
+ attack_offset_y="180">
+ </monst>
+ <monst id="2" stand_id="0" runfile="" attackfile="m1_a.png" runrow="" runcol="" attackrow="4" attackcol="2" 
+run_tile_w="" run_tile_h="" attack_tile_w="290" attack_tile_h="250" stand_offset_x="19" stand_offset_y="127" run_offset_x="" run_offset_y="" 
+attack_offset_x="122" attack_offset_y="182">
+</monst>
+<monst id="3" stand_id="2" runfile="" attackfile="m3_a.png" runrow="" runcol="" attackrow="2" attackcol="4" run_tile_w="" run_tile_h="" 
+attack_tile_w="250" attack_tile_h="200" stand_offset_x="49" stand_offset_y="126" run_offset_x="" run_offset_y="" attack_offset_x="118"
+ attack_offset_y="172">
+ </monst>
+</root>

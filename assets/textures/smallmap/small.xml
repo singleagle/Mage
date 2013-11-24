@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<texture version="1" file="small.png" type="bitmap" width="256" height="512" pixelformat="RGBA_8888" minfilter="linear" magfilter="linear" wrapt="clamp" wraps="clamp" premultiplyalpha="false">
+    <!-- Created with TexturePacker -->
+    <!-- http://texturepacker.com -->
+    <!-- $TexturePacker:SmartUpdate:12d6b89d6415361463a1253dc24472c9$ -->
+    <textureregion id="0" src="border.png" x="0" y="0" width="128" height="128" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="128" srcheight="128"/>
+    <textureregion id="1" src="goback.png" x="128" y="0" width="64" height="64" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="64" srcheight="64"/>
+    <textureregion id="2" src="map2.jpg" x="0" y="128" width="89" height="78" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="89" srcheight="78"/>
+    <textureregion id="3" src="map3.jpg" x="89" y="128" width="89" height="78" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="89" srcheight="78"/>
+    <textureregion id="4" src="map4.jpg" x="0" y="206" width="89" height="78" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="89" srcheight="78"/>
+    <textureregion id="5" src="map5.jpg" x="89" y="206" width="89" height="78" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="89" srcheight="78"/>
+    <textureregion id="6" src="nothing.png" x="0" y="284" width="89" height="78" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="89" srcheight="78"/>
+    <textureregion id="7" src="return.png" x="89" y="284" width="64" height="64" rotated="false" trimmed="false" srcx="0" srcy="0" srcwidth="64" srcheight="64"/>
+</texture>

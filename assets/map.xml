@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+ <file id="0" descname="菜单" filename="menu.jpg"></file>
+ <file id="1" descname="卡萨洛城" filename="map1.jpg"></file>
+ <file id="2" descname="BOSS场景选择" filename="switch.png"></file>
+ <file id="3" descname="雷鸣大陆" filename="map2.jpg"></file>
+ <file id="4" descname="迷梦沼泽" filename="map5.jpg"></file>
+ <file id="5" descname="砺风戈壁" filename="map3.jpg"></file>
+ <file id="6" descname="雪狼冰原" filename="map4.jpg"></file>
+</map>

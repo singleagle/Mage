@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 关卡选择场景 -->
+<root>
+<scene id="1001" name="关卡选择" desc="" pk="false" type="1"></scene>
+<map fileid="2"></map>
+<layout type="0" posx="47" posy="100"></layout> <!-- 流体布局 -->
+<door x="105" y="192" toscene="1002" tox="120" toy="320" title="雷鸣大陆" imageid="2"></door>
+<door x="220" y="192" toscene="1003" tox="120" toy="320" title="迷梦沼泽" imageid="5"></door>
+<door x="335" y="192" toscene="1004" tox="120" toy="320" title="砺风戈壁" imageid="3"></door>
+<door x="460" y="192" toscene="1005" tox="120" toy="320" title="雪狼冰原" imageid="4"></door>
+<door x="460" y="192" toscene="1001" tox="120" toy="320" title="" imageid="6"></door>
+<door x="460" y="192" toscene="1001" tox="120" toy="320" title="" imageid="6"></door>
+<door x="460" y="192" toscene="1001" tox="120" toy="320" title="" imageid="6"></door>
+<door x="460" y="192" toscene="1001" tox="120" toy="320" title="" imageid="6"></door>
+ </root>
