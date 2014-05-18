@@ -1,13 +1,18 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
 
 
 
 
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
+
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.data.Inventory;
 import com.enjoy.mage.graphics.DlgGrh;
+
+
 
 
 
@@ -44,10 +49,10 @@ public class InventoryDlg extends Dialog{
 		
 	private void onCreateSprite(Scene scene)
 	{
-		
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
 		for(int i=0;i<5;i++)
 		{
-			Sprite localSprite=new Sprite(mLeftUpPos.x,mLeftUpPos.y+45*i,DlgGrh.getmBagRegion())
+			Sprite localSprite=new Sprite(mLeftUpPos.x,mLeftUpPos.y+45*i,DlgGrh.getmBagRegion(), vm)
 			{
 				
 				///contains��ѭ���б����� ��pX,pYΪ ���ص���� ��ͨ���ж�containsȻ����ִ��onAreaTouched

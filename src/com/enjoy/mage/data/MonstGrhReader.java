@@ -2,7 +2,7 @@ package com.enjoy.mage.data;
 import java.io.InputStream;
 import java.util.HashMap;
 
-import org.anddev.andengine.util.Debug;
+import org.andengine.util.debug.Debug;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 

@@ -1,8 +1,8 @@
 package com.enjoy.mage.process;
 import java.util.ArrayList;
 
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.util.MathUtils;
+import org.andengine.entity.scene.Scene;
+import org.andengine.util.math.MathUtils;
 
 import com.enjoy.mage.config.SceneConfig;
 import com.enjoy.mage.data.ItemsReader;

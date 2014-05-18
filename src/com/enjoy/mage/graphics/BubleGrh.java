@@ -1,15 +1,17 @@
 package com.enjoy.mage.graphics;
 
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.AnimatedSprite;
-import org.anddev.andengine.opengl.texture.TextureOptions;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
-import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.AnimatedSprite;
+import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;
 
 
-//�����߽�ʱ��NPC ����
 public class BubleGrh {
 	private BitmapTextureAtlas mAtlas;
 	private TiledTextureRegion  mRegion;
@@ -18,14 +20,16 @@ public class BubleGrh {
 	public void onLoadResource()
 	{
 		Tools.setAssetsPath("textures/");
-		mAtlas=new BitmapTextureAtlas(128,32,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		TextureManager tm = Global.GetEngine().getTextureManager();
+		mAtlas=new BitmapTextureAtlas(tm, 128,32,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		mRegion=Tools.CreateTiledRegion(mAtlas,"buble.png",0,0,3,1); 
 		Tools.LoadAtlas(mAtlas);
 	}
 	
 	public void onLoadScene(Scene scene)
 	{
-		mAniSprite=new AnimatedSprite(0,0,34,32,mRegion);
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		mAniSprite=new AnimatedSprite(0,0,34,32,mRegion,vm);
 		mAniSprite.animate(100);
 		if(!mAniSprite.hasParent())
 		scene.attachChild(mAniSprite);

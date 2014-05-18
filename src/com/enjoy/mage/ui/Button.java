@@ -1,11 +1,13 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import android.graphics.Color;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.config.MultipleGrhCfg;
 import com.enjoy.mage.config.UIConfig;
 import com.enjoy.mage.graphics.SceneTextGrh;
@@ -20,13 +22,13 @@ public class Button{
 		mTextGrh.onLoadResource();
 	}
 	
-	//��ʾ����
 	Sprite mSprite;
 	public void onLoadSprite(Scene scene,Sprite parentSprite,String text,final IClickListener click)
 	{
 		
 		TextureRegion localRegion=MultipleManager.FACE.getRegion(MultipleGrhCfg.BTN_ID);
-		mSprite=new Sprite(0,0,localRegion)
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		mSprite=new Sprite(0,0,localRegion, vm)
 		{
 
 			@Override

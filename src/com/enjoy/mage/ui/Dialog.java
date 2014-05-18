@@ -1,8 +1,10 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.primitive.Rectangle;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
+import org.andengine.entity.primitive.Rectangle;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.config.UIConfig;
 import com.enjoy.mage.graphics.DlgGrh;
 import com.enjoy.mage.graphics.TextGrh;
@@ -16,7 +18,7 @@ import android.graphics.Point;
 public class Dialog {
 	protected Point mPos=new Point(0,0);
 	protected Sprite mDlgSprite;
-	protected Rectangle mCloseRect=new Rectangle(277,0,51,38);
+	protected Rectangle mCloseRect;
 	protected TextGrh mTextGrh=new TextGrh();  //���ƿؼ��ϵ����ֻ���
 	protected Scene mScene;
 	
@@ -26,14 +28,17 @@ public class Dialog {
 
 	public Dialog(Point pPos)
 	{
-		mPos=pPos;					
+		mPos=pPos;	
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		mCloseRect=new Rectangle(277,0,51,38, vm);
 	}
 	
 	public void onLoadScene(Scene scene)
 	{
 		mScene=scene;
 		mTextGrh.onLoadResource();		
-		mDlgSprite=new Sprite(mPos.x,mPos.y,DlgGrh.getmDlgRegion());//! �ڻ���ע�� �����¼���������	
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		mDlgSprite=new Sprite(mPos.x,mPos.y,DlgGrh.getmDlgRegion(), vm);//! �ڻ���ע�� �����¼���������	
 		
 		//keepInCenter();//����
 		
@@ -55,7 +60,9 @@ public class Dialog {
 	
 	protected boolean bInCloseRect(float x,float y)
 	{
-		Rectangle localRect=new Rectangle(mPos.x+mCloseRect.getX(),mPos.y+mCloseRect.getY(),mCloseRect.getWidth(),mCloseRect.getHeight());		
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		Rectangle localRect=new Rectangle(mPos.x+mCloseRect.getX(),mPos.y+mCloseRect.getY(),
+				mCloseRect.getWidth(),mCloseRect.getHeight(), vm);		
 		return localRect.contains(x, y);		
 	}
 	

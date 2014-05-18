@@ -1,9 +1,10 @@
 package com.enjoy.mage.graphics;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.opengl.texture.TextureOptions;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.region.TextureRegion;
 
 import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;
@@ -45,7 +46,8 @@ public class DlgGrh {
 	static public void onLoadResources()
 	{
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("textures/ui/");
-		mAtlas=new BitmapTextureAtlas(1024,512,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		TextureManager tm = Global.GetEngine().getTextureManager();
+		mAtlas=new BitmapTextureAtlas(tm, 1024,512,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		
 		mDlgRegion=Tools.CreateTextureRegion(mAtlas,Tools.GetUIFile(UIConfig.DLG_FILE),0,0);
 		mPlayerRegion=Tools.CreateTextureRegion(mAtlas,Tools.GetUIFile(UIConfig.DLG_PALYER),330,0);
@@ -69,7 +71,9 @@ public class DlgGrh {
 	
 	public static void unload()
 	{
-		Global.GetEngine().getTextureManager().unloadTextures(mAtlas);
-		mRingIconRegion.getTextureBuffer().unloadFromActiveBufferObjectManager();
+		mAtlas.unload();
+		//Global.GetEngine().getTextureManager().unloadTextures(mAtlas);
+		mRingIconRegion.getTexture().unload();
+		
 	}
 }

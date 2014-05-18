@@ -1,7 +1,7 @@
 package com.enjoy.mage.common;
 
-import org.anddev.andengine.engine.Engine;
-import org.anddev.andengine.ui.activity.BaseGameActivity;
+import org.andengine.engine.Engine;
+import org.andengine.ui.activity.BaseGameActivity;
 
 import com.enjoy.mage.config.GameConfig;
 

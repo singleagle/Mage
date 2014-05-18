@@ -1,6 +1,6 @@
 package com.enjoy.mage.entity;
 
-import org.anddev.andengine.entity.scene.Scene;
+import org.andengine.entity.scene.Scene;
 
 import android.graphics.Point;
 

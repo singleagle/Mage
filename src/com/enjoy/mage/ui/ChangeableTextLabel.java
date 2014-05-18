@@ -1,5 +1,5 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.sprite.Sprite;
+import org.andengine.entity.sprite.Sprite;
 
 import android.graphics.Color;
 

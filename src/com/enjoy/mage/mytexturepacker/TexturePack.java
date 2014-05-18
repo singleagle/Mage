@@ -1,6 +1,6 @@
 package com.enjoy.mage.mytexturepacker;
-import org.anddev.andengine.opengl.texture.ITexture;
-import org.anddev.andengine.opengl.texture.region.TextureRegionLibrary;
+import org.andengine.opengl.texture.ITexture;
+import org.andengine.opengl.texture.region.TextureRegionLibrary;
 
 /**
  * (c) Zynga 2011

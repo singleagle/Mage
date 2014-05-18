@@ -1,5 +1,5 @@
 package com.enjoy.mage.manager;
-import org.anddev.andengine.entity.scene.Scene;
+import org.andengine.entity.scene.Scene;
 
 import com.enjoy.mage.data.ItemsReader;
 import com.enjoy.mage.entity.NPC;
@@ -12,10 +12,7 @@ import com.enjoy.mage.ui.PlayerDlg;
 import com.enjoy.mage.ui.TaskDlg;
 import com.enjoy.mage.ui.ToolBar;
 import com.enjoy.mage.ui.ToolBarItem;
-/**
- * @author shaoleibo
- * ͳһ��ȾUI����
- */
+
 public class UIManager {
 	
 	static ToolBar mToolBar=new ToolBar();
@@ -25,12 +22,11 @@ public class UIManager {
 	static Controller mController=new Controller();
 	
 	
-	//�жϵ�ǰ��ɫ�Ƿ���NPC���� �����NPC���� �͵�������Ի���
 	static public void showTaskDlg(NPC pNpc)
 	{
 	     if(pNpc!=null)
 	     {
-	    	if(pNpc.isBCanTalk())  //�Ƿ��ܹ���NPC��̸  �ߵ�NPC������ isBCanTalk���ܹ�����ΪTrue
+	    	if(pNpc.isBCanTalk())  
 	    	{
 			 ((TaskDlg)mTaskDlg).setNpc(pNpc);
 			 mTaskDlg.show();
@@ -72,11 +68,8 @@ public class UIManager {
 	
 	static public void onLoadResources()
 	{
-		////////////////////////////////
-		
-		/////////////////////////////////	
-		mController.onLoadResources(); //�������
-		DlgGrh.onLoadResources();   //���봰�ڽ���
+		mController.onLoadResources();
+		DlgGrh.onLoadResources();   
 		ItemsReader.onLoad();
 		((PlayerDlg)mPlayerDlg).loadResources();
 		init();	

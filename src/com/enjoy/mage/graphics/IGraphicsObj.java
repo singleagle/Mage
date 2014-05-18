@@ -1,7 +1,7 @@
 package com.enjoy.mage.graphics;
 
-import org.anddev.andengine.engine.Engine;
-import org.anddev.andengine.entity.scene.Scene;
+import org.andengine.engine.Engine;
+import org.andengine.entity.scene.Scene;
 
 import android.content.Context;
 

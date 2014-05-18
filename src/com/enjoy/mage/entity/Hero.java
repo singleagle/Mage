@@ -1,8 +1,8 @@
 package com.enjoy.mage.entity;
-import org.anddev.andengine.engine.handler.IUpdateHandler;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.AnimatedSprite;
-import org.anddev.andengine.entity.sprite.AnimatedSprite.IAnimationListener;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.AnimatedSprite;
+import org.andengine.entity.sprite.AnimatedSprite.IAnimationListener;
 
 import android.graphics.Point;
 
@@ -145,15 +145,35 @@ public class Hero extends Role{
 		 mGrh.toAttacking(new IAnimationListener() {
 			
 			@Override
-			public void onAnimationEnd(AnimatedSprite pAnimatedSprite) {
-				// TODO Auto-generated method stub
-				mGrh.toStand();//�л�Ϊվ��
+			public void onAnimationFinished(AnimatedSprite pAnimatedSprite) {
+				mGrh.toStand();
 				Role target=Hero.this.getTarget();
 				if(target instanceof Monst)
 				{
 					Monst monst=(Monst)target;
 					FightProcessor.processAttack(Hero.this, monst);					
 				}				
+			}
+
+			@Override
+			public void onAnimationStarted(AnimatedSprite pAnimatedSprite,
+					int pInitialLoopCount) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onAnimationFrameChanged(AnimatedSprite pAnimatedSprite,
+					int pOldFrameIndex, int pNewFrameIndex) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onAnimationLoopFinished(AnimatedSprite pAnimatedSprite,
+					int pRemainingLoopCount, int pInitialLoopCount) {
+				// TODO Auto-generated method stub
+				
 			}
 		 });
 		}

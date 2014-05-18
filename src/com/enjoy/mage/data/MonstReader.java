@@ -2,7 +2,7 @@ package com.enjoy.mage.data;
 import java.io.InputStream;
 import java.util.Hashtable;
 
-import org.anddev.andengine.util.Debug;
+import org.andengine.util.debug.Debug;
 
 import android.content.res.AssetManager;
 
@@ -27,7 +27,7 @@ public class MonstReader {
 	{
 		try
 		{
-			MonstGrhReader.onLoad();//����ͼƬ��Դ
+			MonstGrhReader.onLoad();
 			AssetManager am=Global.GetContext().getAssets();
 			InputStream input=am.open("monst.swx");
 
@@ -82,7 +82,7 @@ public class MonstReader {
 	{
 		try{
 		  byte [] bVal=new byte[4];
-		  int readCount=0;//�Ѿ��ɹ���ȡ���ֽ���		  
+		  int readCount=0;		  
 		  while(readCount<4)
 		    readCount+=input.read(bVal,readCount,4-readCount);
 		 

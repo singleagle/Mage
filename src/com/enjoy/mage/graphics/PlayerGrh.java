@@ -1,14 +1,16 @@
 package com.enjoy.mage.graphics;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.AnimatedSprite;
-import org.anddev.andengine.entity.sprite.BaseSprite;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.entity.sprite.AnimatedSprite.IAnimationListener;
-import org.anddev.andengine.opengl.texture.TextureOptions;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
-import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.AnimatedSprite;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.sprite.AnimatedSprite.IAnimationListener;
+import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;
 import com.enjoy.mage.config.MultipleGrhCfg;
 import com.enjoy.mage.config.UIConfig;
@@ -56,15 +58,15 @@ public class PlayerGrh {
 		return mPos;
 	}
 
-	private Point mPos;//������ꣻ�������   ����ڻ�׼��
+	private Point mPos;
 	private Point mStandOffset,mRunOffset,mAttackOffset,mDieOffset;//��׼��ƫ��
 	
 	AnimatedSprite mRunLeftSprite,mRunRightSprite,mAttackLeftSprite,mAttackRightSprite;
 	Sprite mStandLeftSprite,mStandRightSprite,mHeroUISprite,mDieSprite;
 	Scene mScene;
-	long mAniTime=80;//������ʾʱ�� 
+	long mAniTime=80;
 	long mAttackTime=70;
-	int mDir=1;//�� ������¼������������
+	int mDir=1;
     float mVx=0.5f,mVy=0.5f;
     
     String mStandRFile,mStandLFile,mRunRFile,mRunLFile,mAttackRFile,mAttackLFile,mHeroUIFile;
@@ -100,24 +102,25 @@ public class PlayerGrh {
 	public void onLoadResource()
 	{
 		Tools.setAssetsPath("textures/");
-		mStandAtlas=new BitmapTextureAtlas(512,512,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		TextureManager tm = Global.GetEngine().getTextureManager();
+		mStandAtlas=new BitmapTextureAtlas(tm, 512,512,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		mStandRight=Tools.CreateTextureRegion(mStandAtlas,mStandRFile,0,0);	
 		mStandLeft=Tools.CreateTextureRegion(mStandAtlas,mStandLFile,256,0);
 		
-		mRunAtlas=new BitmapTextureAtlas(4096,512,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		mRunAtlas=new BitmapTextureAtlas(tm, 4096,512,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		mRunRight=Tools.CreateTiledRegion(mRunAtlas,mRunRFile,0,0,10,1);
 		mRunLeft=Tools.CreateTiledRegion(mRunAtlas,mRunLFile,0,256,10,1);	
 		
-		mAttackAtlas=new BitmapTextureAtlas(4096,1024,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		mAttackAtlas=new BitmapTextureAtlas(tm, 4096,1024,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		mAttackRight=Tools.CreateTiledRegion(mAttackAtlas,mAttackRFile,0,0,11,1);
 		mAttackLeft=Tools.CreateTiledRegion(mAttackAtlas,mAttackLFile,0,512,11,1);
 		
-	    mHeroUIAtlas=new BitmapTextureAtlas(256,128,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+	    mHeroUIAtlas=new BitmapTextureAtlas(tm, 256,128,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 	    mHeroUI=Tools.CreateTextureRegion(mHeroUIAtlas, mHeroUIFile, 0, 0);
 	    
-	    mHPMPAtlas=new BitmapTextureAtlas(128,32,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+	    mHPMPAtlas=new BitmapTextureAtlas(tm, 128,32,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 	    mHP=Tools.CreateTiledRegion(mHPMPAtlas, mHPMPFileName, 0,0,1,2);
-	    mMP=Tools.CreateTiledRegion(mHPMPAtlas, mHPMPFileName, 0,0,1,2);		
+	    mMP=Tools.CreateTiledRegion(mHPMPAtlas, mHPMPFileName, 0,0,1,2);
 		Tools.LoadAtlas(mRunAtlas,mStandAtlas,mAttackAtlas,mHeroUIAtlas,mHPMPAtlas);
 		
 	}
@@ -126,24 +129,25 @@ public class PlayerGrh {
 	{
 		mDieSprite=MultipleManager.FACE.getSprite(MultipleGrhCfg.DIE_ID);
 		
-    	mStandLeftSprite=new Sprite(mPos.x-mStandOffset.x,mPos.y-mStandOffset.y,mStandLeft);
-    	mStandRightSprite=new Sprite(mPos.x-mStandOffset.x,mPos.y-mStandOffset.y,mStandRight);
-    	mRunLeftSprite=new AnimatedSprite(mPos.x-mRunOffset.x,mPos.y-mRunOffset.y,mRunLeft);
-    	mRunRightSprite=new AnimatedSprite(mPos.x-mRunOffset.x,mPos.y-mRunOffset.y,mRunRight);
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+    	mStandLeftSprite=new Sprite(mPos.x-mStandOffset.x,mPos.y-mStandOffset.y,mStandLeft, vm);
+    	mStandRightSprite=new Sprite(mPos.x-mStandOffset.x,mPos.y-mStandOffset.y,mStandRight, vm);
+    	mRunLeftSprite=new AnimatedSprite(mPos.x-mRunOffset.x,mPos.y-mRunOffset.y,mRunLeft, vm);
+    	mRunRightSprite=new AnimatedSprite(mPos.x-mRunOffset.x,mPos.y-mRunOffset.y,mRunRight, vm);
     	   	
-    	mAttackLeftSprite=new AnimatedSprite(mPos.x-mAttackOffset.x,mPos.y-mAttackOffset.y,mAttackLeft);
-    	mAttackRightSprite=new AnimatedSprite(mPos.x-mAttackOffset.x,mPos.y-mAttackOffset.y,mAttackRight);  
+    	mAttackLeftSprite=new AnimatedSprite(mPos.x-mAttackOffset.x,mPos.y-mAttackOffset.y,mAttackLeft, vm);
+    	mAttackRightSprite=new AnimatedSprite(mPos.x-mAttackOffset.x,mPos.y-mAttackOffset.y,mAttackRight, vm);  
     	
-    	mHeroUISprite=new Sprite(0,0,mHeroUI);
+    	mHeroUISprite=new Sprite(0,0,mHeroUI, vm);
     	Sprite localFaceSprite=MultipleManager.FACE.getSprite(mFaceImage);
     	localFaceSprite.setPosition(2,4);
     	mHeroUISprite.attachChild(localFaceSprite);
     	
-    	mHPSprite=new AnimatedSprite(65,22,97,9,mHP);
+    	mHPSprite=new AnimatedSprite(65,22,97,9,mHP, vm);
     	
     	mHPSprite.setCurrentTileIndex(1);
     	
-    	mMPSprite=new AnimatedSprite(65,35,97,9,mMP);
+    	mMPSprite=new AnimatedSprite(65,35,97,9,mMP, vm);
     
 	}
 	
@@ -153,9 +157,9 @@ public class PlayerGrh {
     	
     	createSprite();
     	
-    	//��֤һ������ֻ���һ��
-    	if(scene.getChildIndex(mStandRightSprite)==-1)
+    	if(mStandRightSprite.getParent() != scene)
     	{
+    		
     	  scene.attachChild(mStandRightSprite);
     	  scene.attachChild(mStandLeftSprite);
     	  scene.attachChild(mRunLeftSprite);
@@ -247,7 +251,7 @@ public class PlayerGrh {
     }
     
     //�ı�ͼ�����ʾ���
-    private void changePos(BaseSprite sprite,Point newPos,Point offset)
+    private void changePos(Sprite sprite,Point newPos,Point offset)
     {
     	sprite.setPosition(newPos.x-offset.x,newPos.y-offset.y);
     	

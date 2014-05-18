@@ -1,10 +1,12 @@
 package com.enjoy.mage.ui;
 
-import org.anddev.andengine.engine.handler.IUpdateHandler;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.entity.Hero;
 import com.enjoy.mage.graphics.DlgGrh;
 import com.enjoy.mage.manager.RoleManager;
@@ -38,8 +40,9 @@ public class PlayerDlg extends Dialog{
 	public void onLoadScene(Scene scene)
 	{		
 		super.onLoadScene(scene);
-				
-		mPlayerSprite=new Sprite(0,0,DlgGrh.getmPlayerRegion())
+		
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		mPlayerSprite=new Sprite(0,0,DlgGrh.getmPlayerRegion(), vm)
 		{
 			
 			@Override

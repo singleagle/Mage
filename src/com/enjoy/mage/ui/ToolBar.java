@@ -1,7 +1,8 @@
 package com.enjoy.mage.ui;
 import java.util.ArrayList;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
+
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
 public class ToolBar {
 	
     Sprite mRoleIconSprite,mBagIconSprite,mTaskIconSprite;

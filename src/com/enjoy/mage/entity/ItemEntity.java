@@ -1,7 +1,7 @@
 package com.enjoy.mage.entity;
-import org.anddev.andengine.engine.handler.IUpdateHandler;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
 
 import com.enjoy.mage.config.SceneConfig;
 import com.enjoy.mage.config.UIConfig;

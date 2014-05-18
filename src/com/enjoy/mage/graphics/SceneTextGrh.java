@@ -1,16 +1,16 @@
 package com.enjoy.mage.graphics;
-import org.anddev.andengine.entity.IEntity;
-import org.anddev.andengine.entity.text.ChangeableText;
-import org.anddev.andengine.entity.text.Text;
-import org.anddev.andengine.opengl.font.Font;
-import org.anddev.andengine.opengl.texture.TextureOptions;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 
-
-
+import org.andengine.entity.IEntity;
+import org.andengine.entity.text.Text;
+import org.andengine.opengl.font.Font;
+import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import android.graphics.Typeface;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;
 import com.enjoy.mage.config.UIConfig;
 public class SceneTextGrh {
@@ -31,23 +31,26 @@ public class SceneTextGrh {
  
 	public void onLoadResource()
 	{
-		this.mFontTexture = new BitmapTextureAtlas(256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);	
-	    mFont = new Font(this.mFontTexture, Typeface.create(Typeface.DEFAULT, Typeface.BOLD),mSize, true,mColor);		 
+		TextureManager tm = Global.GetEngine().getTextureManager();
+		this.mFontTexture = new BitmapTextureAtlas(tm, 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);	
+	    mFont = new Font(Global.GetEngine().getFontManager(), this.mFontTexture, Typeface.create(Typeface.DEFAULT, Typeface.BOLD),mSize, true,mColor);		 
         Tools.LoadAtlas(mFontTexture);
         Tools.LoadFont(mFont);
 	}
 	
 	public void showText(String text,int x,int y,int z,IEntity parent)	
 	{	
-		Text localSprite= new Text(x,y,mFont,text);	
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		Text localSprite= new Text( x,y,mFont,text, vm);	
 		localSprite.setZIndex(z);
 		parent.attachChild(localSprite);		         
 	}	
 	
-	ChangeableText mAniText;
+	Text mAniText;
 	public void showChangeableText(String text,int x,int y,int z,IEntity parent)
 	{
-		mAniText=new ChangeableText(x, y, mFont, text);
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		mAniText=new Text(x, y, mFont, text, vm);
 		mAniText.setZIndex(z);		
 		parent.attachChild(mAniText);
 	}
@@ -74,7 +77,7 @@ public class SceneTextGrh {
 	{
 		mAniText.setVisible(b);
 	}
-	public ChangeableText getmAniText() {
+	public Text getmAniText() {
 		return mAniText;
 	}
 }

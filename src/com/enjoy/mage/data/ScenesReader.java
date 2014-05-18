@@ -18,7 +18,6 @@ import com.enjoy.mage.entity.Switch;
 import com.enjoy.mage.graphics.SceneTextGrh;
 
 
-//������� �����б� ��Ӧ��XML ������Ϣ���浽һ��ARRAYLISE�� 
 public class ScenesReader {
 	static private ArrayList<String> mFileList=new ArrayList<String>();	
 	static private ArrayList<SceneInfo> mSceneInfos=new ArrayList<SceneInfo>();
@@ -137,7 +136,7 @@ public class ScenesReader {
 					else if(tagName.equals("monst"))
 					{
 						int monstID=Tools.GetIntVal(xrp, "id");
-						Monst localMonst=MonstReader.GetMonst(monstID);  //������Ϣ
+						Monst localMonst=MonstReader.GetMonst(monstID); 
 						sceneInfo.addMonst(localMonst);                  
 					}
 					else

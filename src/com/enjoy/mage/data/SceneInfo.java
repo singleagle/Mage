@@ -1,7 +1,7 @@
 package com.enjoy.mage.data;
 import java.util.ArrayList;
 
-import org.anddev.andengine.entity.sprite.Sprite;
+import org.andengine.entity.sprite.Sprite;
 
 import com.enjoy.mage.config.MapConfig;
 import com.enjoy.mage.entity.Door;

@@ -1,16 +1,17 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import android.graphics.Color;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.config.MultipleGrhCfg;
 import com.enjoy.mage.config.SceneConfig;
 import com.enjoy.mage.graphics.SceneTextGrh;
 import com.enjoy.mage.manager.MultipleManager;
 
-//�˳���Ϸ�Ի���
 public class ModelDlg extends Scene {
 	
 	SceneTextGrh mText; 
@@ -24,8 +25,8 @@ public class ModelDlg extends Scene {
 	public void onLoadScene(String text,final IClickListener pCancle,final IClickListener pOk)
 	{
 		Sprite border=MultipleManager.FACE.getSprite(MultipleGrhCfg.DIALOGBG_ID);
-		
-		Sprite btnOk=new Sprite(0,0,MultipleManager.FACE.getRegion(MultipleGrhCfg.BTNOK_ID)){
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		Sprite btnOk=new Sprite(0,0,MultipleManager.FACE.getRegion(MultipleGrhCfg.BTNOK_ID), vm){
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) 
 			{
 			   pOk.onClick();
@@ -33,11 +34,10 @@ public class ModelDlg extends Scene {
 			}
 		};
 		
-		Sprite btnCancle=new Sprite(0,0,MultipleManager.FACE.getRegion(MultipleGrhCfg.BTNCANCLE_ID)){
+		Sprite btnCancle=new Sprite(0,0,MultipleManager.FACE.getRegion(MultipleGrhCfg.BTNCANCLE_ID), vm){
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
 					float pTouchAreaLocalX, float pTouchAreaLocalY) {
-				// TODO Auto-generated method stub
 				pCancle.onClick();
 				return true;
 			}
@@ -55,7 +55,7 @@ public class ModelDlg extends Scene {
 		this.setBackgroundEnabled(false);
 		this.registerTouchArea(btnOk);
 		this.registerTouchArea(btnCancle);
-		this.setTouchAreaBindingEnabled(true);
+		//this.setTouchAreaBindingEnabled(true);
 		
 	}
 }

@@ -1,7 +1,7 @@
 package com.enjoy.mage.process;
 
-import org.anddev.andengine.util.Debug;
-import org.anddev.andengine.util.MathUtils;
+import org.andengine.util.debug.Debug;
+import org.andengine.util.math.MathUtils;
 
 import com.enjoy.mage.entity.AttackNumber;
 import com.enjoy.mage.entity.Hero;

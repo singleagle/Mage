@@ -1,15 +1,12 @@
 package com.enjoy.mage.entity;
 
-import org.anddev.andengine.entity.IEntity;
-import org.anddev.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
-import org.anddev.andengine.entity.modifier.MoveModifier;
-import org.anddev.andengine.entity.modifier.ScaleModifier;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.text.ChangeableText;
-import org.anddev.andengine.util.modifier.IModifier;
-
-
-
+import org.andengine.entity.IEntity;
+import org.andengine.entity.modifier.MoveModifier;
+import org.andengine.entity.modifier.ScaleModifier;
+import org.andengine.entity.modifier.IEntityModifier.IEntityModifierListener;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.text.Text;
+import org.andengine.util.modifier.IModifier;
 
 import android.graphics.Color;
 
@@ -131,7 +128,7 @@ public class AttackNumber {
 		pGrh.setVisible(true);
 		pGrh.updateText(text,x,y);
 		MoveModifier mm=new MoveModifier(0.7f,x,x,y,y-80,new MoveEnd(pGrh));		
-		ChangeableText textSprite=pGrh.getmAniText();
+		Text textSprite=pGrh.getmAniText();
 		textSprite.clearEntityModifiers();
 		textSprite.registerEntityModifier(mm);	
 	}

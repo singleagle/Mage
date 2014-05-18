@@ -1,9 +1,11 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
-import org.anddev.andengine.util.Debug;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
+import org.andengine.util.debug.Debug;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;
 import com.enjoy.mage.config.UIConfig;
 import com.enjoy.mage.data.Inventory;
@@ -15,7 +17,7 @@ import com.enjoy.mage.entity.NpcType;
 import com.enjoy.mage.entity.TextType;
 import com.enjoy.mage.graphics.DlgGrh;
 import com.enjoy.mage.manager.RoleManager;
-import com.enjoy.mage.manager.SceneManager;
+import com.enjoy.mage.manager.GameWord;
 
 import android.graphics.Point;
 
@@ -38,7 +40,8 @@ public class TaskDlg extends Dialog{
 	{
 		super.onLoadScene(scene);
 		
-		mLineSprite=new Sprite(UIConfig.TASK_LINE_X,UIConfig.TASK_LINE_Y,DlgGrh.getLineRegion())
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		mLineSprite=new Sprite(UIConfig.TASK_LINE_X,UIConfig.TASK_LINE_Y,DlgGrh.getLineRegion(), vm)
 		{
 			
 			///contains��ѭ�������� pX,pYΪ ���ص���� ��ͨ���ж�containsȻ����ִ��onAreaTouched
@@ -149,16 +152,15 @@ public class TaskDlg extends Dialog{
 					public void onClick() {
 							// TODO Auto-generated method stub
 						//SceneManager.gotoScene(1000, 1002);
-						mScene.setChildScene(SceneManager.getScene(1001));
+						mScene.setChildScene(GameWord.getInstance().getScene(1001));
 				
 					}						
-				});  //��ӽ�������ť
+				});  
 				
 			}
 		}
 	}
 	
-	//�Ƴ�ť �Լ����ִ��б�
 	private void remove()
 	{
 		mDlgSprite.detachChildren();

@@ -4,19 +4,21 @@ import java.io.InputStream;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import org.anddev.andengine.extension.texturepacker.opengl.texture.util.texturepacker.exception.TexturePackParseException;
-import org.anddev.andengine.opengl.texture.ITexture;
-import org.anddev.andengine.opengl.texture.Texture.PixelFormat;
-import org.anddev.andengine.opengl.texture.TextureOptions;
-import org.anddev.andengine.opengl.texture.bitmap.BitmapTexture;
-import org.anddev.andengine.opengl.texture.bitmap.BitmapTexture.BitmapTextureFormat;
-import org.anddev.andengine.opengl.texture.compressed.pvr.PVRCCZTexture;
-import org.anddev.andengine.opengl.texture.compressed.pvr.PVRGZTexture;
-import org.anddev.andengine.opengl.texture.compressed.pvr.PVRTexture;
-import org.anddev.andengine.opengl.texture.compressed.pvr.PVRTexture.PVRTextureFormat;
-import org.anddev.andengine.opengl.texture.region.TextureRegionFactory;
-import org.anddev.andengine.opengl.texture.region.TextureRegionLibrary;
-import org.anddev.andengine.util.SAXUtils;
+import org.andengine.extension.texturepacker.opengl.texture.util.texturepacker.TexturePackParser;
+import org.andengine.extension.texturepacker.opengl.texture.util.texturepacker.exception.TexturePackParseException;
+import org.andengine.opengl.texture.ITexture;
+import org.andengine.opengl.texture.PixelFormat;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.bitmap.BitmapTexture;
+import org.andengine.opengl.texture.bitmap.BitmapTextureFormat;
+import org.andengine.opengl.texture.compressed.pvr.PVRCCZTexture;
+import org.andengine.opengl.texture.compressed.pvr.PVRGZTexture;
+import org.andengine.opengl.texture.compressed.pvr.PVRTexture;
+import org.andengine.opengl.texture.compressed.pvr.PVRTexture.PVRTextureFormat;
+import org.andengine.opengl.texture.region.TextureRegionFactory;
+import org.andengine.opengl.texture.region.TextureRegionLibrary;
+import org.andengine.util.SAXUtils;
+import org.andengine.util.adt.io.in.IInputStreamOpener;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -144,13 +146,13 @@ public class TexturePackParser extends DefaultHandler {
         //Repair by ���ײ�
 		final TextureOptions textureOptions=TextureOptions.BILINEAR_PREMULTIPLYALPHA;
 		if(type.equals(TexturePackParser.TAG_TEXTURE_ATTRIBUTE_TYPE_VALUE_BITMAP)) {
-			try {
-				return new BitmapTexture(BitmapTextureFormat.fromPixelFormat(pixelFormat), textureOptions) {
+			try{
+				return new BitmapTexture(this.mTextureManager, new IInputStreamOpener() {
 					@Override
-					protected InputStream onGetInputStream() throws IOException {
-						return TexturePackParser.this.mContext.getAssets().open(TexturePackParser.this.mAssetBasePath + file);
+					public InputStream open() throws IOException {
+						return TexturePackParser.this.onGetInputStream(file);
 					}
-				};
+				}, BitmapTextureFormat.fromPixelFormat(pixelFormat), textureOptions);
 			} catch (final IOException e) {
 				throw new TexturePackParseException(e);
 			}

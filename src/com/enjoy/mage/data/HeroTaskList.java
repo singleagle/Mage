@@ -6,10 +6,9 @@ import java.util.ArrayList;
  * �����б�   
  */
 public class HeroTaskList {
-	public ArrayList<Task> mTasks=new ArrayList<Task>();// ���ɽ���������б�
-	public ArrayList<Task> mHistorys=new ArrayList<Task>(); //����������б�
+	public ArrayList<Task> mTasks=new ArrayList<Task>();
+	public ArrayList<Task> mHistorys=new ArrayList<Task>(); 
 	
-	//�Ƿ�Ϊ��ʼ״̬ û���κ�����������
 	public boolean isInit()
 	{
 		if(mTasks.size()==0&&mHistorys.size()==0)
@@ -22,7 +21,6 @@ public class HeroTaskList {
 		}
 	}
 	
-	//��������
 	public void addTask(Task task)
 	{
 		mTasks.add(task);
@@ -33,7 +31,6 @@ public class HeroTaskList {
 		mTasks.remove(task);
 	}
 	
-	//��������Ѿ���� ����ӵ���������б���  ���Ҵӵ�ǰ�����б��Ƴ�
     public void addHistory(Task task)
     {
     	mHistorys.add(task);

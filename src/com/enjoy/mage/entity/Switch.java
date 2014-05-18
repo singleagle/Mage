@@ -1,12 +1,14 @@
 package com.enjoy.mage.entity;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.config.SmallMapCfg;
 import com.enjoy.mage.manager.MultipleManager;
-import com.enjoy.mage.manager.SceneManager;
+import com.enjoy.mage.manager.GameWord;
 
 
 public class Switch extends Door{
@@ -27,7 +29,8 @@ public class Switch extends Door{
 		  {
 			Sprite board=MultipleManager.SCENEICON.getSprite(SmallMapCfg.BORDER_ID);
 			TextureRegion region=MultipleManager.SCENEICON.getRegion(mImgId);
-			Sprite icon=new Sprite(20,28,region){		
+			VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+			Sprite icon=new Sprite(20,28,region, vm){		
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
 					float pTouchAreaLocalX, float pTouchAreaLocalY) {
@@ -35,7 +38,7 @@ public class Switch extends Door{
 				 
 				if(pSceneTouchEvent.isActionDown())
 				 {
-					SceneManager.gotoScene(1000,mToSceneId);
+					GameWord.getInstance().gotoScene(1000,mToSceneId);
 					return true; 
 				 }
 				else 

@@ -1,14 +1,17 @@
 package com.enjoy.mage.graphics;
 
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.AnimatedSprite;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.opengl.texture.TextureOptions;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
-import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.AnimatedSprite;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import android.graphics.Point;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;
 import com.enjoy.mage.config.MultipleGrhCfg;
 import com.enjoy.mage.config.UIConfig;
@@ -65,7 +68,8 @@ public class MonstGrh {
 		//mRunAtlas=new BitmapTextureAtlas(mPara.mRunAtlasSizeX,mPara.mRunAtlasSizeY,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		//mRun=Tools.CreateTiledRegion(mRunAtlas,mRunFile,0,0,mPara.mRunCol,mPara.mRunRow);
 		
-		mAttackAtlas=new BitmapTextureAtlas(mPara.mAttackAtlasSizeW,mPara.mAttackAtlasSizeH,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		TextureManager tm = Global.GetEngine().getTextureManager();
+		mAttackAtlas=new BitmapTextureAtlas(tm, mPara.mAttackAtlasSizeW,mPara.mAttackAtlasSizeH,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		mAttack=Tools.CreateTiledRegion(mAttackAtlas,mAttackFile,0,0,mPara.mAttackCol,mPara.mAttackRow);
 		
 	    Tools.LoadAtlas(mAttackAtlas);
@@ -80,7 +84,9 @@ public class MonstGrh {
 	{
 		//mRunSprite=new AnimatedSprite(mPos.x-mRunOffset.x,mPos.y-mRunOffset.y,mPara.mRunTileWidth,mPara.mRunTileHeight,mRun);		
 		mStandSprite=MultipleManager.MSTAND.getSprite(mStandImageId);
-		mAttackSprite=new AnimatedSprite(mPos.x-mAttackOffset.x,mPos.y-mAttackOffset.y,mPara.mAttackTileWidth,mPara.mAttackTileHeight,mAttack);
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		mAttackSprite=new AnimatedSprite(mPos.x-mAttackOffset.x,mPos.y-mAttackOffset.y,mPara.mAttackTileWidth,mPara.mAttackTileHeight,
+				mAttack, vm);
 		
 		//Path path=new Path(5);//ÿ������
 		//path.to(10,10).to(300,10);

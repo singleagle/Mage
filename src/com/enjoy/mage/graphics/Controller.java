@@ -1,16 +1,19 @@
 package com.enjoy.mage.graphics;
-import org.anddev.andengine.engine.handler.IUpdateHandler;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
-import org.anddev.andengine.opengl.texture.TextureOptions;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;
 import com.enjoy.mage.config.UIConfig;
 import com.enjoy.mage.entity.ItemEntity;
-import com.enjoy.mage.entity.MYScene;
+import com.enjoy.mage.entity.MageScene;
 import com.enjoy.mage.entity.NPC;
 import com.enjoy.mage.manager.RoleManager;
 import com.enjoy.mage.manager.UIManager;
@@ -26,13 +29,13 @@ public class Controller {
 	int WIDTH=720;
 	int HEIGHT=480;
 	
-	//�����̵�����ƫ��
 	int mOffsetX=3;
 	int mOffsetY=280;
 
 	public void onLoadResources()
 	{
-		this.mControllerAtlas=new BitmapTextureAtlas(128,256,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		TextureManager tm = Global.GetEngine().getTextureManager();
+		this.mControllerAtlas=new BitmapTextureAtlas(tm, 128,256,TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 		mLeft=GetRegion("left.png",0,0);
 		mDown=GetRegion("down.png",0,64);
 		mRight=GetRegion("right.png",64,0);
@@ -65,7 +68,7 @@ public class Controller {
 	    
 	    Sprite mAttack=getAttackSprite(700,330,scene);
 	    
-	    if(scene.getChildIndex(mAttack)==-1)
+	    if(mAttack.getParent() != scene)
 	    {
 	      scene.attachChild(mAttack);
 	    }
@@ -89,10 +92,9 @@ public class Controller {
 		
 	    @Override
 		public void onUpdate(float pSecondsElapsed) {
-			// TODO Auto-generated method stub
          	if(mUpTime-mDownTime>100) //��������
         	{
-         		if(((MYScene)mScene).getSceneInfo().isCanPK())  //�ж��Ƿ�ΪPK����
+         		if(((MageScene)mScene).getSceneInfo().isCanPK())  //�ж��Ƿ�ΪPK����
          		{
          			if(RoleManager.getHero().getTarget()!=null)
          			 RoleManager.getHero().attackTarget(); 
@@ -161,7 +163,8 @@ public class Controller {
 	
 	public Sprite getUpSprite(int x,int y,Scene scene)
 	{
-		return new Sprite(x,y, mUp)
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		return new Sprite(x,y, mUp, vm)
 		{
             @Override
             public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
@@ -176,7 +179,7 @@ public class Controller {
                 {
               
                 	this.setScale(1.0f);
-                	RoleManager.getHero().getGrh().toStand(0,0);//����ƫ��
+                	RoleManager.getHero().getGrh().toStand(0,0);
                 }
                 else if(pSceneTouchEvent.isActionMove())
                 {
@@ -192,7 +195,8 @@ public class Controller {
 	
 	public Sprite getDownSprite(int x,int y,Scene scene)
 	{
-		return new Sprite(x,y, mDown)
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		return new Sprite(x,y, mDown,vm)
 		{
             @Override
             public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
@@ -225,7 +229,8 @@ public class Controller {
 	int tPos=0;
 	public Sprite getRightSprite(int x,int y,final Scene scene)
 	{
-		return new Sprite(x,y, mRight)
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		return new Sprite(x,y, mRight,vm)
 		{
             @Override
             public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
@@ -250,7 +255,8 @@ public class Controller {
 	
 	public Sprite getLeftSprite(int x,int y,Scene scene)
 	{
-		return new Sprite(x,y,mLeft)
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		return new Sprite(x,y,mLeft, vm)
 		{
             @Override
             public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {
@@ -285,7 +291,8 @@ public class Controller {
 	private boolean bFirstDown=true;//һ���غ��ڵ�һ�ΰ���  ������֤���ذ�ť��ʱ��
 	public Sprite getAttackSprite(int x,int y,final Scene scene)
 	{
-		return new Sprite(x,y,mAttack)
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		return new Sprite(x,y,mAttack, vm)
 		{
             @Override
             public boolean onAreaTouched(final TouchEvent pSceneTouchEvent, final float pTouchAreaLocalX, final float pTouchAreaLocalY) {

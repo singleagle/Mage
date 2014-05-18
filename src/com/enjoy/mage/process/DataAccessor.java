@@ -2,7 +2,7 @@ package com.enjoy.mage.process;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.anddev.andengine.util.Debug;
+import org.andengine.util.debug.Debug;
 
 import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;

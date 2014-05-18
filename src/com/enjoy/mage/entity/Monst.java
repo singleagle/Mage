@@ -1,8 +1,8 @@
 package com.enjoy.mage.entity;
 import java.util.ArrayList;
 
-import org.anddev.andengine.engine.handler.IUpdateHandler;
-import org.anddev.andengine.entity.scene.Scene;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.scene.Scene;
 
 import android.graphics.Point;
 

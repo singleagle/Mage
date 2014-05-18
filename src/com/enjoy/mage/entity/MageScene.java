@@ -1,9 +1,11 @@
 package com.enjoy.mage.entity;
-import org.anddev.andengine.engine.handler.IUpdateHandler;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.config.SceneConfig;
 import com.enjoy.mage.config.SmallMapCfg;
 import com.enjoy.mage.data.SceneInfo;
@@ -11,26 +13,20 @@ import com.enjoy.mage.data.SceneLayout;
 import com.enjoy.mage.data.SceneType;
 import com.enjoy.mage.manager.MultipleManager;
 import com.enjoy.mage.manager.RoleManager;
-import com.enjoy.mage.manager.SceneManager;
+import com.enjoy.mage.manager.GameWord;
 
-/**
- * @author shaoleibo
- * ���𵥸����������� ��Ⱦ �Լ�һЩ�߼�
- */
-public class MYScene extends Scene{
+public class MageScene extends Scene{
 	protected  SceneInfo mSceneInfo=null;
-	public MYScene(SceneInfo info)
+	public MageScene(SceneInfo info)
 	{
 		setSceneInfo(info);
 	}
 	
-	//���س���ID
 	public int getId()
 	{
 		return mSceneInfo.getId();
 	}
 	
-   //��ͼͼƬ�Լ������еĴ��͵��NPC�����뵽��Ϸ��	
 	public void onLoad()
 	{		
 		Sprite map=mSceneInfo.getMapImage();
@@ -57,7 +53,7 @@ public class MYScene extends Scene{
 			  }
 			  else
 			  {
-				  ((Switch)door).loadOnScene(this); //��ѡ��ؿ��ĳ���
+				  ((Switch)door).loadOnScene(this); 
 			  }
 			}
 			count++;
@@ -70,20 +66,20 @@ public class MYScene extends Scene{
 		AttackNumber.loadOnAllScenes(this);
 		if(mSceneInfo.getType()==SceneType.SCENE_TYPE_MONST)
 		{
-			AttackNumber.loadOnScene(this); //�����˺���ֵ���
+			AttackNumber.loadOnScene(this); 
 			for(Monst m:mSceneInfo.getMonsts())
 			{
 				m.loadOnScene(this);
 			}
 			
-			 Sprite returnSprite=new Sprite(0,0,MultipleManager.SCENEICON.getRegion(SmallMapCfg.GOBACK_ID)){
+			VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+			 Sprite returnSprite=new Sprite(0,0,MultipleManager.SCENEICON.getRegion(SmallMapCfg.GOBACK_ID), vm){
 				@Override
 			 public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
 						float pTouchAreaLocalX, float pTouchAreaLocalY) {
-					// TODO Auto-generated method stub
 					if(pSceneTouchEvent.isActionDown())
 					{
-						SceneManager.goBackToMainScene(getId());
+						GameWord.getInstance().goBackToMainScene(getId());
 						return true;
 					}
 					else
@@ -98,7 +94,7 @@ public class MYScene extends Scene{
 			this.attachChild(returnSprite);			
 		}
 			
-		this.setTouchAreaBindingEnabled(true);
+		//this.setTouchAreaBindingEnabled(true);
 		this.registerUpdateHandler(new IUpdateHandler() {
 			
 			@Override
@@ -109,8 +105,7 @@ public class MYScene extends Scene{
 			
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
-				// TODO Auto-generated method stub
-				MYScene.this.sortChildren();
+				MageScene.this.sortChildren();
 				RoleManager.getHero().getGrh().update();
 			}
 		});		

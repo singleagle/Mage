@@ -13,8 +13,6 @@ import com.enjoy.mage.common.Tools;
 
 
 /**
- * @author shaoleibo
- * ��ȡ��TASK.XML
  */
 public class TasksReader {
 
@@ -57,7 +55,7 @@ public class TasksReader {
 				    	if(tagName.equals("desc"))
 				    	{
 				    	  String desc=xrp.nextText();
-				    	  localTask.setmDesc(desc);	//setһ��Ҫע��
+				    	  localTask.setmDesc(desc);	
 				    	}
 				    	else if(tagName.equals("inprogressdesc"))
 				    	{

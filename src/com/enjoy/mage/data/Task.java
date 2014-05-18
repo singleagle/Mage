@@ -1,15 +1,12 @@
 package com.enjoy.mage.data;
 import java.util.ArrayList;
-/**
- * @author shaoleibo
- * ����ϵͳ
- */
+
 public class Task {
-	private int mID=0;  //����ID  Ψһ��ʾ
-	private int mNPCID=0; //����NPCID  Ψһ��ʾ
-	private int mRequiredTaskID=-1; //��Ҫ����ID
-	private int mType=0; //��������
-	private String mDesc="";//��������
+	private int mID=0;  
+	private int mNPCID=0; 
+	private int mRequiredTaskID=-1; 
+	private int mType=0; 
+	private String mDesc="";
 	
 	private ArrayList<Integer> mRequiredItemsID=new ArrayList<Integer>(); //��Ҫ��ƷID
 	
@@ -22,7 +19,7 @@ public class Task {
 
 	private ArrayList<String> mReplies=new ArrayList<String>();//�Ի�������Ĵ��б�
 	
-	private String mInProgerssDesc=""; //�����ڽ����е�����
+	private String mInProgerssDesc=""; 
 	
 	public int getmID() {
 		return mID;

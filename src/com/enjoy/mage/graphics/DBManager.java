@@ -1,6 +1,6 @@
 package com.enjoy.mage.graphics;
 
-import org.anddev.andengine.util.Debug;
+import org.andengine.util.debug.Debug;
 
 import android.content.Context;
 import android.database.Cursor;

@@ -1,24 +1,29 @@
 package com.enjoy.mage.graphics;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.opengl.texture.ITexture;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
-import org.anddev.andengine.opengl.texture.region.TextureRegionLibrary;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.extension.texturepacker.opengl.texture.util.texturepacker.TexturePack;
+import org.andengine.extension.texturepacker.opengl.texture.util.texturepacker.TexturePackLoader;
+import org.andengine.extension.texturepacker.opengl.texture.util.texturepacker.TexturePackTextureRegionLibrary;
+import org.andengine.opengl.texture.ITexture;
+import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.texture.region.TextureRegionLibrary;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.enjoy.mage.common.Global;
 import com.enjoy.mage.common.Tools;
-import com.enjoy.mage.mytexturepacker.TexturePack;
-import com.enjoy.mage.mytexturepacker.TexturePackLoader;
 
 
 public class MultipleGrh {
 	private ITexture mSpritesheetTexture;
-	private TextureRegionLibrary mSpritesheetTextureRegionLibrary;
+	private TexturePackTextureRegionLibrary  mSpritesheetTextureRegionLibrary;
     public void onLoadResource(String path,String xmlPath)
 	{
 		try{
-		   final TexturePack spritesheetTexturePack = new TexturePackLoader(Global.GetContext(),"textures/"+path).loadFromAsset(Global.GetContext(),xmlPath);
+			TextureManager tm = Global.GetEngine().getTextureManager();
+		   final TexturePack spritesheetTexturePack = new TexturePackLoader(tm,"textures/"+path).loadFromAsset(Global.GetContext().getAssets(),
+				   xmlPath);
 		   mSpritesheetTexture=spritesheetTexturePack.getTexture();
-		   mSpritesheetTextureRegionLibrary=spritesheetTexturePack.getTextureRegionLibrary();		  
+		   mSpritesheetTextureRegionLibrary=spritesheetTexturePack.getTexturePackTextureRegionLibrary();		  
 		   Tools.LoadAtlas(mSpritesheetTexture);
 		}
 		catch(Exception e)
@@ -30,14 +35,15 @@ public class MultipleGrh {
     //��ȡRegion
     public TextureRegion getRegion(int id)
     {
-    	TextureRegion localRegion=mSpritesheetTextureRegionLibrary.get(id).clone();
+    	TextureRegion localRegion=mSpritesheetTextureRegionLibrary.get(id).deepCopy();
     	return localRegion;
     }
     
     //
 	public Sprite getSprite(int id)
 	{
-		TextureRegion localRegion=mSpritesheetTextureRegionLibrary.get(id).clone();	
-		return new Sprite(0,0,localRegion);
+		TextureRegion localRegion=mSpritesheetTextureRegionLibrary.get(id).deepCopy();	
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		return new Sprite(0,0,localRegion, vm);
 	}	
 }

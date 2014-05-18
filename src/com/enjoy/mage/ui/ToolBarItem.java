@@ -1,9 +1,11 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.config.UIConfig;
 import com.enjoy.mage.graphics.DlgGrh;
 
@@ -30,7 +32,8 @@ public class ToolBarItem extends Dialog{
 		super(pPos);
 		mRegion=pRegion;
 		mClick=click;
-		lDlgSprite=new Sprite(mPos.x,mPos.y,DlgGrh.getmRingIconRegion());
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		lDlgSprite=new Sprite(mPos.x,mPos.y,DlgGrh.getmRingIconRegion(), vm);
 	}
 	
 	public ToolBarItem(int x,int y,TextureRegion pRegion,IClickListener click)
@@ -46,7 +49,8 @@ public class ToolBarItem extends Dialog{
     	if(!lDlgSprite.hasParent()) //�����´�����ʱ���ظ�����  ע��Ŀǰ��֪��Ϊʲô�ٴ�����ʱ�� �����������
     	{
     	scene.attachChild(lDlgSprite);	
-		Sprite iconSprite=new Sprite(10,10,mRegion)
+    	VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		Sprite iconSprite=new Sprite(10,10,mRegion, vm)
 		{
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,

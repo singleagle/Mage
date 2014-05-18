@@ -1,19 +1,21 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.modifier.LoopEntityModifier;
-import org.anddev.andengine.entity.modifier.ScaleModifier;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.entity.modifier.LoopEntityModifier;
+import org.andengine.entity.modifier.ScaleModifier;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.config.MultipleGrhCfg;
 import com.enjoy.mage.config.SceneConfig;
 import com.enjoy.mage.data.SceneInfo;
-import com.enjoy.mage.entity.MYScene;
+import com.enjoy.mage.entity.MageScene;
 import com.enjoy.mage.manager.MultipleManager;
-import com.enjoy.mage.manager.SceneManager;
+import com.enjoy.mage.manager.GameWord;
 import com.enjoy.mage.process.DataAccessor;
 
-public class GameMenu extends MYScene{
+public class GameMenu extends MageScene{
 	IClickListener mClick;
 	
 	public void setmClick(IClickListener mClick) {
@@ -34,14 +36,15 @@ public class GameMenu extends MYScene{
 		this.attachChild(map);
 				
 		TextureRegion startRegion=MultipleManager.FACE.getRegion(MultipleGrhCfg.STARTBTN_ID);
-		
-		Sprite start=new Sprite(366,296,startRegion){@Override
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		Sprite start=new Sprite(366,296,startRegion, vm){
+			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
 					float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				// TODO Auto-generated method stub
 			 	if(pSceneTouchEvent.isActionDown())
 			 	{
-			 		SceneManager.gotoScene(SceneConfig.SCENE_MENU_ID,SceneConfig.SCENE_MAIN_ID);
+			 		GameWord.getInstance().gotoScene(SceneConfig.SCENE_MENU_ID,SceneConfig.SCENE_MAIN_ID);
 			 		return true;
 			 	}
 			 	else
@@ -53,7 +56,7 @@ public class GameMenu extends MYScene{
 
 				
 		TextureRegion goonRegion=MultipleManager.FACE.getRegion(MultipleGrhCfg.GOONBTN_ID);
-		Sprite goon=new Sprite(367,349,goonRegion)
+		Sprite goon=new Sprite(367,349,goonRegion, vm)
 		{
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
@@ -61,7 +64,7 @@ public class GameMenu extends MYScene{
 				
 				if(pSceneTouchEvent.isActionDown())
 				{DataAccessor.loadUser();
-					SceneManager.gotoScene(SceneConfig.SCENE_MENU_ID,SceneConfig.SCENE_MAIN_ID);
+					GameWord.getInstance().gotoScene(SceneConfig.SCENE_MENU_ID,SceneConfig.SCENE_MAIN_ID);
 					
 					return true;
 				}
@@ -73,7 +76,7 @@ public class GameMenu extends MYScene{
 		};
 		
 		TextureRegion exitRegion=MultipleManager.FACE.getRegion(MultipleGrhCfg.EXITBTN_ID);
-		Sprite exit=new Sprite(367,402,exitRegion)
+		Sprite exit=new Sprite(367,402,exitRegion, vm)
 		{
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
@@ -110,6 +113,6 @@ public class GameMenu extends MYScene{
 		this.registerTouchArea(start);
 		this.registerTouchArea(goon);
 		this.registerTouchArea(exit);
-		this.setTouchAreaBindingEnabled(true);		
+		//this.setTouchAreaBindingEnabled(true);		
 	}
 }

@@ -1,7 +1,7 @@
 package com.enjoy.mage.entity;
-import org.anddev.andengine.engine.handler.IUpdateHandler;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.AnimatedSprite;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.AnimatedSprite;
 
 import com.enjoy.mage.common.Tools;
 import com.enjoy.mage.config.SceneConfig;
@@ -15,10 +15,10 @@ import android.graphics.Rect;
 public class Door{
     protected Point mPos;
 	protected Rect mRect;
-	protected String mTitle="";  //���� 
-	protected int mToSceneId=-1; //���͵��ĳ���
+	protected String mTitle="";  
+	protected int mToSceneId=-1; 
     protected int mToPosX=0,mToPosY=0;
-    protected int mImgId=-1; //Ĭ��Ϊ���Ͷ�����ͼƬ
+    protected int mImgId=-1; 
     protected SceneTextGrh mTextGrh=null;
     
 

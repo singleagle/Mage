@@ -1,11 +1,7 @@
 package com.enjoy.mage.data;
 import java.util.ArrayList;
-
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.util.Debug;
-
-
-
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.util.debug.Debug;
 
 import com.enjoy.mage.config.UIConfig;
 import com.enjoy.mage.entity.ItemEntity;
@@ -13,7 +9,7 @@ import com.enjoy.mage.entity.ItemEntity;
 public class Inventory {
 	ArrayList<ItemEntity> mItems=new ArrayList<ItemEntity>();
 	public static final int MAX_CAPACITY = 30;//30������
-	private int mCurUseSlot=0;//��ǰʹ���˶��ٸ�����	
+	private int mCurUseSlot=0;
 	private Sprite mSpriteBatch;
 	
 	public ArrayList<ItemEntity> getItems()

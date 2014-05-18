@@ -1,6 +1,6 @@
 package com.enjoy.mage.manager;
 
-import org.anddev.andengine.entity.scene.Scene;
+import org.andengine.entity.scene.Scene;
 
 import com.enjoy.mage.entity.Hero;
 import com.enjoy.mage.graphics.PlayerGrh;

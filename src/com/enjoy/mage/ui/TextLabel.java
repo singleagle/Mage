@@ -1,11 +1,13 @@
 package com.enjoy.mage.ui;
-import org.anddev.andengine.entity.primitive.Rectangle;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.input.touch.TouchEvent;
+import org.andengine.entity.primitive.Rectangle;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import android.graphics.Color;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.config.UIConfig;
 import com.enjoy.mage.graphics.SceneTextGrh;
 
@@ -41,8 +43,8 @@ public class TextLabel {
 	
 	public void onLoadSprite(Scene scene,Sprite parentSprite,String text,int x,int y,final IClickListener click)
 	{   
-		
-		Rectangle mBackRect=new Rectangle(x-mSize,y,mSize*12,mSize)
+		VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+		Rectangle mBackRect=new Rectangle(x-mSize,y,mSize*12,mSize, vm)
 		{
 
 			@Override

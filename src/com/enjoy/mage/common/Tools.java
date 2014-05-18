@@ -1,11 +1,12 @@
 package com.enjoy.mage.common;
 
-import org.anddev.andengine.opengl.font.Font;
-import org.anddev.andengine.opengl.texture.ITexture;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
-import org.anddev.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
-import org.anddev.andengine.opengl.texture.region.TextureRegion;
-import org.anddev.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.opengl.font.Font;
+import org.andengine.opengl.texture.ITexture;
+import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.xmlpull.v1.XmlPullParser;
 
 import com.enjoy.mage.config.UIConfig;
@@ -36,7 +37,12 @@ public class Tools {
 	
 	public static void LoadAtlas(final ITexture ... pTextures)
 	{
-	  Global.GetEngine().getTextureManager().loadTextures(pTextures);
+		TextureManager tm = Global.GetEngine().getTextureManager();
+		
+		for(ITexture iTexture : pTextures){
+			tm.loadTexture(iTexture);
+		}
+	  
 	}
 	
 	public static void LoadFont(Font pFont)

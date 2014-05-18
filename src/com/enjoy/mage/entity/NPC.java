@@ -1,12 +1,14 @@
 package com.enjoy.mage.entity;
-import org.anddev.andengine.engine.handler.IUpdateHandler;
-import org.anddev.andengine.entity.primitive.Rectangle;
-import org.anddev.andengine.entity.scene.Scene;
-import org.anddev.andengine.entity.sprite.Sprite;
-import org.anddev.andengine.util.MathUtils;
+import org.andengine.engine.handler.IUpdateHandler;
+import org.andengine.entity.primitive.Rectangle;
+import org.andengine.entity.scene.Scene;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.opengl.vbo.VertexBufferObjectManager;
+import org.andengine.util.math.MathUtils;
 
 import android.graphics.Point;
 
+import com.enjoy.mage.common.Global;
 import com.enjoy.mage.graphics.BubleGrh;
 import com.enjoy.mage.graphics.SceneTextGrh;
 import com.enjoy.mage.manager.MultipleManager;
@@ -73,7 +75,9 @@ public class NPC extends Role{
 	
 	//npc ���ֱ���
     private Rectangle makeColoredRectangle(final float pX, final float pY) {
-        final Rectangle coloredRect = new Rectangle(pX, pY,(mName.length()+2)*14,15);
+    	
+    	VertexBufferObjectManager vm = Global.GetEngine().getVertexBufferObjectManager();
+        final Rectangle coloredRect = new Rectangle(pX, pY,(mName.length()+2)*14,15, vm);
         coloredRect.setColor(0,0,0);
         coloredRect.setAlpha(0.5f);
         return coloredRect;
